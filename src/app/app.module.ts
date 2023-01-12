@@ -1,22 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
+import { RouterModule, Routes } from '@angular/router';
+import { productModule } from './product/product.module';
+
+/**
+ * Routes
+ */
+const routes: Routes = [
+  {
+    path: 'product',
+    loadChildren: () =>
+      import('./product/product.module').then((m) => m.productModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'product',
+  },
+];
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    MatSlideToggleModule, 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
