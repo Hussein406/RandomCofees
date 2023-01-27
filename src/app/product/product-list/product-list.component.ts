@@ -8,7 +8,6 @@ import { selectCoffees } from '../store/products.selectors';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   coffees: Product[] = [];
