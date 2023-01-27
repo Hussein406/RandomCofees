@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule, Routes } from '@angular/router';
-import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './reducers';
 import { environment } from 'src/environments/environment';
@@ -23,7 +22,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./product/product.module').then((m) => m.productModule),
   },
-  { path: 'details/:id', component: ProductDetailsComponent },
   {
     path: '**',
     redirectTo: 'product',
